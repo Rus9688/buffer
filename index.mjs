@@ -484,6 +484,8 @@ function slowToString (encoding, start, end) {
   let loweredCase = false
 
   // No need to verify that "this.length <= MAX_UINT32" since it's a read-only
+    start = 0
+  }
   // property of a typed array.
 
   // This behaves neither like String nor Uint8Array in that we set start/end
@@ -491,8 +493,6 @@ function slowToString (encoding, start, end) {
   // undefined is handled specially as per ECMA-262 6th Edition,
   // Section 13.3.3.7 Runtime Semantics: KeyedBindingInitialization.
   if (start === undefined || start < 0) {
-    start = 0
-  }
   // Return early if start > this.length. Done here to prevent potential uint32
   // coercion fail below.
   if (start > this.length) {
@@ -2105,4 +2105,8 @@ function defineBigIntMethod (fn) {
 
 function BufferBigIntNotDefined () {
   throw new Error('BigInt not supported')
+}
+
+export default {
+Buffer: Buffer
 }
