@@ -2106,3 +2106,7 @@ function defineBigIntMethod (fn) {
 function BufferBigIntNotDefined () {
   throw new Error('BigInt not supported')
 }
+
+export default {
+  Buffer: Buffer
+}
